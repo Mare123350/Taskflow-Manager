@@ -1,84 +1,55 @@
-// routes/tasks.js
-// Handles all CRUD operations for Task documents
+const express = require('express');
+const router = express.Router();
+const Task = require('../models/Task');
 
-let express = require('express');
-let router = express.Router();
-let Task = require('../models/Task');
-
-// protect routes for logged-in users
-function ensureAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) return next();
-  req.flash('error_msg', 'Please log in to access this feature');
-  res.redirect('/auth/login');
-}
-
-// GET /tasks - list all tasks
+// Show all tasks
 router.get('/', async (req, res) => {
-  try {
-    const tasks = await Task.find().sort({ createdAt: -1 });
-    res.render('tasks/list', {
-      title: 'My Tasks',
-      tasks
-    });
-  } catch (err) {
-    console.error(err);
-    res.render('error', { title: 'Error', message: 'Failed to load tasks' });
-  }
+  const tasks = await Task.find().lean();
+  res.render('tasks/list', {
+    title: 'My Tasks',
+    tasks
+  });
 });
 
-// GET /tasks/create - show form
-router.get('/create', ensureAuthenticated, (req, res) => {
-  res.render('tasks/form', { title: 'Create Task', task: {} });
+// Show Create Task form
+router.get('/create', (req, res) => {
+  res.render('tasks/form', {
+    title: 'Create Task',
+    formAction: '/tasks/create',
+    task: {}   
+  });
 });
 
-// POST /tasks/create - create new task
-router.post('/create', ensureAuthenticated, async (req, res) => {
+// Handle Create Task
+router.post('/create', async (req, res) => {
   try {
     await Task.create(req.body);
-    req.flash('success_msg', 'Task created successfully!');
     res.redirect('/tasks');
   } catch (err) {
-    console.error(err);
-    req.flash('error_msg', 'Failed to create task');
-    res.redirect('/tasks/create');
+    res.send('Error creating task: ' + err.message);
   }
 });
 
-// GET /tasks/edit/:id - load edit form
-router.get('/edit/:id', ensureAuthenticated, async (req, res) => {
-  try {
-    const task = await Task.findById(req.params.id);
-    res.render('tasks/form', { title: 'Edit Task', task });
-  } catch (err) {
-    console.error(err);
-    res.redirect('/tasks');
-  }
+// Show Edit Task form
+router.get('/edit/:id', async (req, res) => {
+  const task = await Task.findById(req.params.id).lean();
+  res.render('tasks/form', {
+    title: 'Edit Task',
+    formAction: `/tasks/edit/${req.params.id}`,
+    task
+  });
 });
 
-// POST /tasks/edit/:id - update task
-router.post('/edit/:id', ensureAuthenticated, async (req, res) => {
-  try {
-    await Task.findByIdAndUpdate(req.params.id, req.body);
-    req.flash('success_msg', 'Task updated successfully');
-    res.redirect('/tasks');
-  } catch (err) {
-    console.error(err);
-    req.flash('error_msg', 'Failed to update task');
-    res.redirect('/tasks');
-  }
+// Handle Edit Task
+router.post('/edit/:id', async (req, res) => {
+  await Task.findByIdAndUpdate(req.params.id, req.body);
+  res.redirect('/tasks');
 });
 
-// POST /tasks/delete/:id - delete task
-router.post('/delete/:id', ensureAuthenticated, async (req, res) => {
-  try {
-    await Task.findByIdAndDelete(req.params.id);
-    req.flash('success_msg', 'Task deleted');
-    res.redirect('/tasks');
-  } catch (err) {
-    console.error(err);
-    req.flash('error_msg', 'Failed to delete task');
-    res.redirect('/tasks');
-  }
+// Delete Task
+router.get('/delete/:id', async (req, res) => {
+  await Task.findByIdAndDelete(req.params.id);
+  res.redirect('/tasks');
 });
 
 module.exports = router;
