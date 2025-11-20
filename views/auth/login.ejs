@@ -1,0 +1,37 @@
+<%- include('../partials/header') %>
+
+<div class="container" style="max-width: 520px;">
+  <h1 class="mb-4 text-center">Login</h1>
+
+  <% if (error_msg && error_msg.length > 0) { %>
+    <div class="alert alert-danger"><%= error_msg[0] %></div>
+  <% } %>
+
+  <% if (error && error.length > 0) { %>
+    <div class="alert alert-danger"><%= error[0] %></div>
+  <% } %>
+
+  <% if (success_msg && success_msg.length > 0) { %>
+    <div class="alert alert-success"><%= success_msg[0] %></div>
+  <% } %>
+
+  <form method="POST" action="/auth/login" class="card p-4 shadow-sm">
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" name="email" id="email" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" name="password" id="password" class="form-control" required>
+    </div>
+
+    <button class="btn btn-primary w-100" type="submit">Login</button>
+
+    <p class="text-center mt-3">
+      Need an account? <a href="/auth/register">Register</a>
+    </p>
+  </form>
+</div>
+
+<%- include('../partials/footer') %>

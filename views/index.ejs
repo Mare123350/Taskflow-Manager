@@ -1,0 +1,136 @@
+<%- include('partials/header') %>
+
+<div class="container hero-section">
+  <div class="row align-items-center">
+    <!-- Left side: text + buttons -->
+    <div class="col-lg-7 mb-4 mb-lg-0">
+      <span class="badge bg-gradient-blue mb-3">
+         Stay on top of everything
+      </span>
+
+      <h1 class="hero-title mb-3">
+        Organize your life with <span>TaskFlow Manager</span>
+      </h1>
+
+      <p class="hero-subtitle mb-4">
+        Track your work, school, and personal tasks in one clean dashboard.
+        Priorities, categories, due dates, and completion status all in one place.
+      </p>
+
+      <div class="hero-buttons mb-4">
+        <a href="/tasks" class="btn btn-primary btn-lg me-2">
+          View My Tasks
+        </a>
+        <a href="/tasks/create" class="btn btn-outline-light btn-lg hero-secondary-btn">
+       + Add New Task
+       </a>
+
+      </div>
+
+      <div class="d-flex flex-wrap gap-3 hero-pills">
+        <div class="feature-pill">
+          Priority & category tags
+        </div>
+        <div class="feature-pill">
+           Smart overdue indicator
+        </div>
+        <div class="feature-pill">
+          Backed by MongoDB Atlas
+        </div>
+      </div>
+    </div>
+
+    <!-- Right side: floating preview card -->
+    <div class="col-lg-5">
+      <div class="floating-card shadow-lg">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <span class="badge bg-success-soft">Today</span>
+          <span class="text-muted small">Demo preview</span>
+        </div>
+
+        <div class="task-row mb-3">
+          <div>
+            <h6 class="task-title mb-1">Finish Assignment Report</h6>
+            <p class="task-meta mb-0">
+              <span class="badge bg-warning text-dark me-1">High</span>
+              <span class="badge bg-secondary me-1">School</span>
+              Due: Today · <span class="text-danger">Overdue</span>
+            </p>
+          </div>
+          <span class="status-dot status-overdue"></span>
+        </div>
+
+        <div class="task-row mb-3">
+          <div>
+            <h6 class="task-title mb-1">Gym session</h6>
+            <p class="task-meta mb-0">
+              <span class="badge bg-success me-1">Low</span>
+              <span class="badge bg-secondary me-1">Personal</span>
+              Due: Tomorrow
+            </p>
+          </div>
+          <span class="status-dot status-pending"></span>
+        </div>
+
+        <div class="task-row">
+          <div>
+            <h6 class="task-title mb-1">Team project meeting</h6>
+            <p class="task-meta mb-0">
+              <span class="badge bg-info text-dark me-1">Medium</span>
+              <span class="badge bg-secondary me-1">Work</span>
+              Completed
+            </p>
+          </div>
+          <span class="status-dot status-done"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- How it works section -->
+<section class="container how-it-works my-5">
+  <div class="row text-center mb-4">
+    <div class="col">
+      <h2 class="section-title">How TaskFlow Manager works</h2>
+      <p class="section-subtitle">
+        Three simple steps to keep everything under control.
+      </p>
+    </div>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="hiw-card">
+        <div class="hiw-icon">1</div>
+        <h5>Add your tasks</h5>
+        <p>
+          Create tasks with titles, detailed descriptions, categories, priorities,
+          due dates, and completion status.
+        </p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="hiw-card">
+        <div class="hiw-icon">2</div>
+        <h5>View everything at a glance</h5>
+        <p>
+          Use the tasks page to see all tasks in one table with clear labels,
+          due dates, and overdue indicators.
+        </p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="hiw-card">
+        <div class="hiw-icon">3</div>
+        <h5>Update as you go</h5>
+        <p>
+          Edit tasks as plans change, and mark them as completed when you’re done.
+          Your data is stored securely in MongoDB.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

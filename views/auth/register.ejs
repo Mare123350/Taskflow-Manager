@@ -1,0 +1,87 @@
+<%- include('../partials/header') %>
+
+<div class="container" style="max-width: 520px;">
+  <h1 class="mb-4 text-center">Create an Account</h1>
+
+  <!-- Validation Errors -->
+  <% if (errors && errors.length > 0) { %>
+    <div class="alert alert-danger">
+      <ul class="mb-0">
+        <% errors.forEach(e => { %>
+          <li><%= e.msg %></li>
+        <% }) %>
+      </ul>
+    </div>
+  <% } %>
+
+  <!-- Flash Errors -->
+  <% if (error_msg && error_msg.length > 0) { %>
+    <div class="alert alert-danger"><%= error_msg[0] %></div>
+  <% } %>
+
+  <% if (error && error.length > 0) { %>
+    <div class="alert alert-danger"><%= error[0] %></div>
+  <% } %>
+
+  <!-- Flash Success -->
+  <% if (success_msg && success_msg.length > 0) { %>
+    <div class="alert alert-success"><%= success_msg[0] %></div>
+  <% } %>
+
+  <form action="/auth/register" method="POST" class="card p-4 shadow-sm">
+
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input 
+        type="text"
+        id="name"
+        name="name"
+        class="form-control"
+        value="<%= typeof name !== 'undefined' ? name : '' %>"
+        required
+      >
+    </div>
+
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input 
+        type="email"
+        id="email"
+        name="email"
+        class="form-control"
+        value="<%= typeof email !== 'undefined' ? email : '' %>"
+        required
+      >
+    </div>
+
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input 
+        type="password"
+        id="password"
+        name="password"
+        class="form-control"
+        required
+      >
+    </div>
+
+    <div class="mb-3">
+      <label for="password2" class="form-label">Confirm Password</label>
+      <input 
+        type="password"
+        id="password2"
+        name="password2"
+        class="form-control"
+        required
+      >
+    </div>
+
+    <button class="btn btn-primary w-100" type="submit">Register</button>
+
+    <p class="text-center mt-3">
+      Already have an account? <a href="/auth/login">Login</a>
+    </p>
+  </form>
+</div>
+
+<%- include('../partials/footer') %>

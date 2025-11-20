@@ -1,0 +1,12 @@
+<%- include('partials/header') %>
+
+<div class="container">
+  <h1 class="mb-3">Error</h1>
+  <p class="lead"><%= message %></p>
+  <% if (error && error.status) { %>
+    <p>Status: <%= error.status %></p>
+  <% } %>
+  <a href="/" class="btn btn-primary mt-3">Go Home</a>
+</div>
+
+<%- include('partials/footer') %>

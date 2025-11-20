@@ -1,0 +1,196 @@
+/* ====== Home / Hero styling ====== */
+
+.hero-section {
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+
+.hero-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: oklch(47.25% 0.09849 276.989 / 0.709);
+}
+
+.hero-title span {
+  background: linear-gradient(90deg, #60a5fa, #a855f7);
+  background-clip: text;              /* standard */
+  -webkit-background-clip: text;      /* Safari / Chrome */
+  -webkit-text-fill-color: transparent;
+}
+
+
+.hero-subtitle {
+  font-size: 1.05rem;
+  color: #2e2237;
+  max-width: 36rem;
+}
+
+.bg-gradient-blue {
+  background: linear-gradient(90deg, #2563eb, #0ea5e9);
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+}
+
+.hero-buttons .btn-lg {
+  padding-inline: 1.7rem;
+}
+
+.hero-pills {
+  gap: 0.5rem;
+}
+
+.feature-pill {
+  background-color: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.85rem;
+  color: #e5e7eb;
+}
+
+/* Floating preview card on the right */
+
+.floating-card {
+  background: radial-gradient(circle at top left, #1d4ed8 0, #020617 55%);
+  border-radius: 1.2rem;
+  padding: 1.2rem 1.4rem;
+  color: #e5e7eb;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  transform: translateY(0);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.floating-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.7);
+}
+
+.task-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-title {
+  font-weight: 600;
+}
+
+.task-meta {
+  font-size: 0.8rem;
+  color: #cbd5f5;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  display: inline-block;
+}
+
+.status-overdue {
+  background-color: #ef4444;
+}
+
+.status-pending {
+  background-color: #facc15;
+}
+
+.status-done {
+  background-color: #22c55e;
+}
+
+/* How it works section */
+
+.how-it-works {
+  padding-bottom: 3rem;
+}
+
+.section-title {
+  color: #23356e;
+  font-weight: 600;
+}
+
+.section-subtitle {
+  color: #9ca3af;
+}
+
+.hiw-card {
+  background-color: #0f172a;
+  border-radius: 1rem;
+  padding: 1.4rem 1.4rem 1.3rem;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  height: 100%;
+}
+
+.hiw-card h5 {
+  color: #e5e7eb;
+  margin-top: 0.75rem;
+  margin-bottom: 0.4rem;
+}
+
+.hiw-card p {
+  color: #9ca3af;
+  font-size: 0.9rem;
+}
+
+.hiw-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  background: linear-gradient(135deg, #60a5fa, #a855f7);
+  color: #0b1120;
+  font-size: 0.9rem;
+}
+
+/* Soft success badge used in floating card */
+.bg-success-soft {
+  background-color: rgba(34, 197, 94, 0.15);
+  color: #bbf7d0;
+  border-radius: 999px;
+  padding: 0.2rem 0.7rem;
+}
+
+.btn-modern {
+  padding: 0.55rem 1.4rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: 0.2s ease;
+  width: auto !important;
+  display: inline-block !important;
+}
+
+.btn-modern-light {
+  background-color: #475569;
+  border: none;
+  color: #f1f5f9;
+  padding: 0.55rem 1.4rem;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.btn-modern-light:hover {
+  background-color: #64748b;
+}
+
+/* Prevent form buttons from stretching full width */
+form .btn {
+  width: auto !important;
+  display: inline-block !important;
+}
+
+/* Make the secondary hero button more visible */
+.hero-secondary-btn {
+  background-color: rgba(255, 255, 255, 0.95);
+  color: #1f2937; /* dark text */
+  border-color: #cbd5e1;
+  font-weight: 600;
+}
+
+.hero-secondary-btn:hover {
+  background-color: #e5e7eb;
+  color: #111827;
+}
