@@ -4,6 +4,8 @@ let router = express.Router();
 let passport = require('passport');
 let User = require('../models/User');
 
+// ================== LOCAL AUTH ================== //
+
 // GET register
 router.get('/register', (req, res) => {
   res.render('auth/register', {
@@ -67,7 +69,7 @@ router.get('/login', (req, res) => {
   res.render('auth/login', { title: 'Login' });
 });
 
-// POST login
+// POST login (local)
 router.post(
   '/login',
   passport.authenticate('local', {
@@ -77,7 +79,44 @@ router.post(
   })
 );
 
-// GET logout
+// ================== GOOGLE AUTH ================== //
+
+// Start Google OAuth
+router.get(
+  '/google',
+  passport.authenticate('google', { scope: ['profile', 'email'] })
+);
+
+// Google OAuth callback
+router.get(
+  '/google/callback',
+  passport.authenticate('google', {
+    successRedirect: '/tasks',
+    failureRedirect: '/auth/login',
+    failureFlash: true
+  })
+);
+
+// ================== GITHUB AUTH ================== //
+
+// Start GitHub OAuth
+router.get(
+  '/github',
+  passport.authenticate('github', { scope: ['user:email'] })
+);
+
+// GitHub OAuth callback
+router.get(
+  '/github/callback',
+  passport.authenticate('github', {
+    successRedirect: '/tasks',
+    failureRedirect: '/auth/login',
+    failureFlash: true
+  })
+);
+
+// ================== LOGOUT ================== //
+
 router.get('/logout', (req, res, next) => {
   req.logout(err => {
     if (err) return next(err);

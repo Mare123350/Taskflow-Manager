@@ -1,15 +1,20 @@
-let session = require('express-session');
-let flash = require('connect-flash');
-let passport = require('passport');
-require('./config/passport')(passport);
+// app.js
 
+// --- Load environment variables first ---
 require('dotenv').config();
+
 let createError = require('http-errors');
 let express = require('express');
 let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 let mongoose = require('mongoose');
+let session = require('express-session');
+let flash = require('connect-flash');
+let passport = require('passport');
+
+// Passport config (now env vars are available)
+require('./config/passport')(passport);
 
 // DB config
 let DB = require('./config/db');
@@ -59,7 +64,7 @@ app.use(flash());
 app.use((req, res, next) => {
   res.locals.success_msg = req.flash('success_msg');
   res.locals.error_msg = req.flash('error_msg');
-  res.locals.error = req.flash('error'); // passport
+  res.locals.error = req.flash('error'); // passport error messages
   res.locals.user = req.user || null;
   next();
 });
